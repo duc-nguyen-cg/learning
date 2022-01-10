@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Test</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <table class="toolbar" border="0" cellspacing="0" cellpadding="0">             
+            <tbody><tr>                         
+                <td>
+                    <div class="cbutton">
+                        <a href="javascript:theView.EndFunction('home')">Home</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="cbutton">
+                        <a href="javascript:theView.FireEvent('back')">Back</a>
+                    </div>
+                </td> 
+                <td>
+                    <div class="cbutton">
+                        <a href="javascript:theView.Print('print?format=xsl')">Show Excel</a>
+                    </div>
+                </td>  
+                <td>
+                    <div class="cbutton">
+                        <a href="javascript:theView.Print('print')">Show PDF</a>
+                    </div>
+                </td>         
+            </tr></tbody>
+        </table>    
+</html>
+
+<script>
+    window.onload = function (){
+        const buttons = document.querySelectorAll(".toolbar .cbutton");
+        const currentPGmenu = "consoleList";
+        let excelBtn = buttons[2];
+
+        const consoleExcelBtn = 
+            `<td>
+                <div class="cbutton">
+                    <a href="javascript:theView.FireEvent('printConsoleListReport?')">Show Excel Console</a>
+                </div>
+            </td>`
+        
+        if (currentPGmenu == "consoleList"){
+            excelBtn.style.display = "none";
+            excelBtn.insertAdjacentHTML("afterend",consoleExcelBtn);
+        }
+    }
+</script>
